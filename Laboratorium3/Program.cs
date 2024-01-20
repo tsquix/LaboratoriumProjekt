@@ -1,4 +1,5 @@
 using Laboratorium3.Models;
+using System.Xml.Linq;
 
 namespace Laboratorium3
 {
@@ -12,7 +13,8 @@ namespace Laboratorium3
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
             builder.Services.AddSingleton<IPostService, MemoryPostService>();
-
+            builder.Services.AddDbContext<Data.AppDbContext>();
+            builder.Services.AddTransient<IPostService, EFPostService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

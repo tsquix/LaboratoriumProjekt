@@ -1,4 +1,5 @@
-﻿using Laboratorium3.Models;
+﻿using Data.Entities;
+using Laboratorium3.Models;
 namespace Laboratorium3.Models
 {
     public interface IPostService
@@ -8,6 +9,7 @@ namespace Laboratorium3.Models
         void Update(Post item);
         List<Post> FindAll();
         Post? FindById(int id);
+        List<OrganizationEntity> FindAllOrganizations();
     }
 }
 

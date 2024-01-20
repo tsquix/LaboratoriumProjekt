@@ -1,4 +1,6 @@
-﻿namespace Laboratorium3.Models
+﻿using Data.Entities;
+
+namespace Laboratorium3.Models
 {
     public class MemoryPostService :IPostService
     {
@@ -56,5 +58,9 @@
             }
         }
 
+        public List<OrganizationEntity> FindAllOrganizations()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
