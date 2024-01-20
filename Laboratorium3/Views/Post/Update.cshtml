@@ -1,0 +1,40 @@
+﻿@using Laboratorium3.Models
+
+@model Post
+<h1>Edytuj post</h1>
+<form asp-controller="Post" asp-action="Update" method="post">
+    <input asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Content">Zawartość</label>
+        <input class="form-control" asp-for="Content" />
+        <span class="text-danger" asp-validation-for="Content"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Author">Autor</label>
+        <input class="form-control" asp-for="Author" />
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PublicationDate">Data publikacji</label>
+        <input type="date" class="form-control" asp-for="PublicationDate" disabled>
+        <span class="text-danger" asp-validation-for="PublicationDate"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Tags">Tagi</label>
+        <select asp-for="Tags" asp-items="@Html.GetEnumSelectList<Tags>()" class="form-control"></select>
+        <span class="text-danger" asp-validation-for="Tags"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Comment">Komentarz</label>
+        <input class="form-control" asp-for="Comment" />
+        <span class="text-danger" asp-validation-for="Comment"></span>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn-primary">Zapisz</button>
+    </div>
+</form>
