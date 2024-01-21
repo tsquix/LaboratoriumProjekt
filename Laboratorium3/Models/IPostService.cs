@@ -10,6 +10,7 @@ namespace Laboratorium3.Models
         List<Post> FindAll();
         Post? FindById(int id);
         List<OrganizationEntity> FindAllOrganizations();
+        //List<OrganizationEntity> FindAllOrganizationsForVieModel();
     }
 }
 

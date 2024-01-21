@@ -25,9 +25,9 @@ namespace Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OrganizationEntity>()
-            .OwnsOne(e => e.Address);
+                .OwnsOne(e => e.Address);
 
-            modelBuilder.Entity<PostEntity>()
+             modelBuilder.Entity<PostEntity>()
                 .HasOne(e => e.Organization)
                 .WithMany(o => o.Posts)
                 .HasForeignKey(e => e.OrganizationId);
@@ -48,14 +48,41 @@ namespace Data
              Regon = "0873439249",
          }
 
+         );
+            modelBuilder.Entity<Content>()
+                .HasData
+                (
+                    new Content() { Id = 100, Title = "ASP.NET"},
+                    new Content() { Id = 101, Title = "C# 10.0"},
+                    new Content() { Id = 102, Title = "Java 19"}
+                );
+            modelBuilder.Entity<Author>()
+                .HasData
+                (
+                    new Author() { Id = 201, Name = "Adam"},
+                    new Author() { Id = 202, Name = "Karol"},
+                    new Author() { Id = 203, Name = "Ewa"}
+                );
 
-           );
+            modelBuilder.Entity<Content>()
+               .HasMany<Author>(b => b.Authors)
+               .WithMany(a => a.Contents)
+               .UsingEntity
+               (
+                 join => join.HasData
+                 (
+                     new { ContentsId = 101, AuthorsId = 201 },
+                     new { ContentsId = 101, AuthorsId = 202 },
+                     new { ContentsId = 102, AuthorsId = 201 }
+                 )
+                );
+
             modelBuilder.Entity<OrganizationEntity>()
-               .OwnsOne(e => e.Address)
-               .HasData(
-                   new { OrganizationEntityId = 1, City = "Kraków", Street = "Św. Filipa 17", PostalCode = "31-150", Region = "małopolskie" },
-                   new { OrganizationEntityId = 2, City = "Kraków", Street = "Krowoderska 45/6", PostalCode = "31-150", Region = "małopolskie" }
-               );
+                .OwnsOne(e => e.Address)
+                .HasData(
+                    new { OrganizationEntityId = 1, City = "Kraków", Street = "Św. Filipa 17", PostalCode = "31-150", Region = "małopolskie" },
+                    new { OrganizationEntityId = 2, City = "Kraków", Street = "Krowoderska 45/6", PostalCode = "31-150", Region = "małopolskie" }
+                );
 
             modelBuilder.Entity<PostEntity>().HasData(
                 new PostEntity { Id = 1, Content = "Wojna na Ukrainie kwitnie", Author = "siergiej96", PublicationDate = DateTime.Now, Tags = "Tag1", Comment = "Comment 1" },

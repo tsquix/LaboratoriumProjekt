@@ -40,12 +40,10 @@ namespace Laboratorium3.Controllers
         {
             if (ModelState.IsValid)
             {
- 
                 _postService.Add(model);
                 return RedirectToAction("Index");
             }
 
-            // If ModelState is not valid, return to the view with the model containing the organizations
             InitializeOrganizationsList(model);
             return View(model);
         }
@@ -65,7 +63,6 @@ namespace Laboratorium3.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Jeśli ModelState nie jest poprawny, ponownie inicjuj listę organizacji
             InitializeOrganizationsList(model);
             return View(model);
         }
@@ -88,8 +85,6 @@ namespace Laboratorium3.Controllers
         {
             return View(_postService.FindById(id));
         }
-
-        // Prywatna metoda do inicjowania listy organizacji
         private void InitializeOrganizationsList(Post model)
         {
             model.Organizations = _postService

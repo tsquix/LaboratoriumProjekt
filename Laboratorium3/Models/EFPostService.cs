@@ -27,7 +27,7 @@ namespace Laboratorium3.Models
             if (find != null)
             {
                 _context.Posts.Remove(find);
-                _context.SaveChanges(); // Add this line to save changes to the database
+                _context.SaveChanges(); 
             }
         }
 
@@ -41,7 +41,12 @@ namespace Laboratorium3.Models
                 _context.SaveChanges();
             }
         }
+        public void Update(Post post)
+        {
+            _context.Posts.Update(PostMapper.ToEntity(post));
+            _context.SaveChanges();
 
+        }
         public List<Post> FindAll()
         {
             return _context.Posts.Select(e => PostMapper.FromEntity(e)).ToList();
@@ -52,11 +57,7 @@ namespace Laboratorium3.Models
             return PostMapper.FromEntity(_context.Posts.Find(id));
         }
 
-        public void Update(Post post)
-        {
-            _context.Posts.Update(PostMapper.ToEntity(post));
-           
-        }
+       
         public List<OrganizationEntity> FindAllOrganizations()
         {
             return _context.Organizations.ToList();//nie wiem czy tu
