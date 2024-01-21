@@ -31,15 +31,15 @@ namespace Data
             base.OnModelCreating(modelBuilder);
 
             string ADMIN_ID = Guid.NewGuid().ToString();
-            string ROLE_ADMIN_ID = Guid.NewGuid().ToString();
+            string ROLE_ID = Guid.NewGuid().ToString();
 
             // dodanie roli administratora
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
                 Name = "admin",
                 NormalizedName = "ADMIN",
-                Id = ROLE_ADMIN_ID,
-                ConcurrencyStamp = ROLE_ADMIN_ID
+                Id = ROLE_ID,
+                ConcurrencyStamp = ROLE_ID
             });
 
             // utworzenie administratora jako użytkownika
@@ -60,9 +60,10 @@ namespace Data
             modelBuilder.Entity<IdentityUser>().HasData(admin);
 
             // przypisanie roli administratora użytkownikowi
-            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            modelBuilder.Entity<IdentityUserRole<string>>()
+            .HasData(new IdentityUserRole<string>
             {
-                RoleId = ROLE_ADMIN_ID,
+                RoleId = ROLE_ID,
                 UserId = ADMIN_ID
             });
 

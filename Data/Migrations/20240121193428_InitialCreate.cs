@@ -3,23 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate3 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Organizations",
-                type: "INTEGER",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "INTEGER")
-                .OldAnnotation("Sqlite:Autoincrement", true);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -57,6 +50,50 @@ namespace Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Author",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Author", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Content",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Content", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Organizations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Regon = table.Column<string>(type: "TEXT", nullable: false),
+                    Nip = table.Column<string>(type: "TEXT", nullable: false),
+                    Address_City = table.Column<string>(type: "TEXT", nullable: true),
+                    Address_Street = table.Column<string>(type: "TEXT", nullable: true),
+                    Address_PostalCode = table.Column<string>(type: "TEXT", nullable: true),
+                    Address_Region = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organizations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -165,34 +202,116 @@ namespace Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AuthorContent",
+                columns: table => new
+                {
+                    AuthorsId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ContentsId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuthorContent", x => new { x.AuthorsId, x.ContentsId });
+                    table.ForeignKey(
+                        name: "FK_AuthorContent_Author_AuthorsId",
+                        column: x => x.AuthorsId,
+                        principalTable: "Author",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AuthorContent_Content_ContentsId",
+                        column: x => x.ContentsId,
+                        principalTable: "Content",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "posts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Content = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Author = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    PublicationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Tags = table.Column<string>(type: "TEXT", maxLength: 30, nullable: false),
+                    Comment = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    OrganizationId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_posts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_posts_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "db93cdff-d577-467c-a48c-8aa84f0a6f0f", "db93cdff-d577-467c-a48c-8aa84f0a6f0f", "admin", "ADMIN" });
+                values: new object[] { "68576fb2-f74b-454b-9fb5-30a7a19539bb", "68576fb2-f74b-454b-9fb5-30a7a19539bb", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3ad01d44-d216-439a-b2cf-8dafe3ab11ce", 0, "eb17bacb-f7ec-4df2-866e-763cba84ad6e", "adam@wsei.edu.pl", true, false, null, null, "ADMIN", "AQAAAAIAAYagAAAAECsjL9+DPJu+daVYjdT+NQCHmRzkIYhd7rCiIabow2/uBCHabXNG/nk8zqAontKL6Q==", null, false, "b2021c71-371c-4d4b-b15f-0ac8adaab127", false, "adam" });
+                values: new object[] { "9ce67c0e-6f82-462a-8766-cefe318ca8d8", 0, "47d495de-7cb8-4e6a-88d5-40cc36d07bfd", "adam@wsei.edu.pl", true, false, null, null, "ADMIN", "AQAAAAIAAYagAAAAENQvsmZYxFlIaBXY0fnomb1o1vYTrBmPjU+3Od2CboalXc2xkJebXqVEeVafKNdTqg==", null, false, "94e98f43-7a03-4954-a3d8-85c1c58871a6", false, "adam" });
 
-            migrationBuilder.UpdateData(
-                table: "posts",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "PublicationDate",
-                value: new DateTime(2024, 1, 21, 19, 31, 40, 926, DateTimeKind.Local).AddTicks(2565));
+            migrationBuilder.InsertData(
+                table: "Author",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 201, "Adam" },
+                    { 202, "Karol" },
+                    { 203, "Ewa" }
+                });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
+                table: "Content",
+                columns: new[] { "Id", "Title" },
+                values: new object[,]
+                {
+                    { 100, "ASP.NET" },
+                    { 101, "C# 10.0" },
+                    { 102, "Java 19" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Organizations",
+                columns: new[] { "Id", "Address_City", "Address_PostalCode", "Address_Region", "Address_Street", "Nip", "Regon", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Kraków", "31-150", "małopolskie", "Św. Filipa 17", "83492384", "13424234", "WSEI" },
+                    { 2, "Kraków", "31-150", "małopolskie", "Krowoderska 45/6", "2498534", "0873439249", "Firma" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "posts",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "PublicationDate",
-                value: new DateTime(2024, 1, 21, 19, 31, 40, 926, DateTimeKind.Local).AddTicks(2615));
+                columns: new[] { "Id", "Author", "Comment", "Content", "OrganizationId", "PublicationDate", "Tags" },
+                values: new object[,]
+                {
+                    { 1, "siergiej96", "Comment 1", "Wojna na Ukrainie kwitnie", null, new DateTime(2024, 1, 21, 20, 34, 27, 769, DateTimeKind.Local).AddTicks(5364), "Tag1" },
+                    { 2, "Antoni Macierewicz", "Comment 2", "PIS wygrał wybory", null, new DateTime(2024, 1, 21, 20, 34, 27, 769, DateTimeKind.Local).AddTicks(5412), "Tag2" },
+                    { 3, "maciek2006", "Comment 3", "Barcelona na szczycie", null, new DateTime(2010, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tag3" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "db93cdff-d577-467c-a48c-8aa84f0a6f0f", "3ad01d44-d216-439a-b2cf-8dafe3ab11ce" });
+                values: new object[] { "68576fb2-f74b-454b-9fb5-30a7a19539bb", "9ce67c0e-6f82-462a-8766-cefe318ca8d8" });
+
+            migrationBuilder.InsertData(
+                table: "AuthorContent",
+                columns: new[] { "AuthorsId", "ContentsId" },
+                values: new object[,]
+                {
+                    { 201, 101 },
+                    { 201, 102 },
+                    { 202, 101 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -230,6 +349,16 @@ namespace Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuthorContent_ContentsId",
+                table: "AuthorContent",
+                column: "ContentsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_posts_OrganizationId",
+                table: "posts",
+                column: "OrganizationId");
         }
 
         /// <inheritdoc />
@@ -251,33 +380,25 @@ namespace Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "AuthorContent");
+
+            migrationBuilder.DropTable(
+                name: "posts");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Organizations",
-                type: "INTEGER",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "INTEGER")
-                .Annotation("Sqlite:Autoincrement", true);
+            migrationBuilder.DropTable(
+                name: "Author");
 
-            migrationBuilder.UpdateData(
-                table: "posts",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "PublicationDate",
-                value: new DateTime(2024, 1, 21, 18, 52, 30, 871, DateTimeKind.Local).AddTicks(2172));
+            migrationBuilder.DropTable(
+                name: "Content");
 
-            migrationBuilder.UpdateData(
-                table: "posts",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "PublicationDate",
-                value: new DateTime(2024, 1, 21, 18, 52, 30, 871, DateTimeKind.Local).AddTicks(2223));
+            migrationBuilder.DropTable(
+                name: "Organizations");
         }
     }
 }

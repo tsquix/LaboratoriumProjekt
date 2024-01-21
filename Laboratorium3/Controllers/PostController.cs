@@ -1,5 +1,6 @@
 ﻿using Data.Entities;
 using Laboratorium3.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace Laboratorium3.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PostController : Controller
     {
         private readonly IPostService _postService;
@@ -17,7 +19,7 @@ namespace Laboratorium3.Controllers
             _dateTimeProvider = timeProvider;
             _postService = postService;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_postService.FindAll());
@@ -93,4 +95,5 @@ namespace Laboratorium3.Controllers
                 .ToList();
         }
     }
+
 }

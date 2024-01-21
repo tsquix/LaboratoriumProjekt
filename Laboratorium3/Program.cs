@@ -1,5 +1,8 @@
 using Laboratorium3.Models;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Data;
 
 namespace Laboratorium3
 {
@@ -8,13 +11,21 @@ namespace Laboratorium3
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
 
             // Add services to the container.
+            builder.Services.AddRazorPages();
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
-            builder.Services.AddSingleton<IPostService, MemoryPostService>();
             builder.Services.AddDbContext<Data.AppDbContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>()       // dodaæ
+                .AddRoles<IdentityRole>()                             //
+                .AddEntityFrameworkStores<Data.AppDbContext>();     // 
+            builder.Services.AddSingleton<IPostService, MemoryPostService>();
+            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
             builder.Services.AddTransient<IPostService, EFPostService>();
+            builder.Services.AddMemoryCache();                        // dodaæ
+            builder.Services.AddSession();                            // dodaæ  
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,8 +41,10 @@ namespace Laboratorium3
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
+            app.UseAuthentication();                                 // dodaæ
+            app.UseAuthorization();                                  // dodaæ
+            app.UseSession();                                        // dodaæ 
+            app.MapRazorPages();                                     // dodaæ
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
