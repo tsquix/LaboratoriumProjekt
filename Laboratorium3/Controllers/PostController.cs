@@ -26,8 +26,12 @@ namespace Laboratorium3.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new Post();
-            InitializeOrganizationsList(model);
+            Post model = new Post();
+            model.Organizations = _postService
+                .FindAllOrganizations()
+                .Select(o => new SelectListItem() { Value = o.Id.ToString(), Text = o.Title })
+                .ToList();
+
             return View(model);
         }
 
@@ -36,11 +40,12 @@ namespace Laboratorium3.Controllers
         {
             if (ModelState.IsValid)
             {
+ 
                 _postService.Add(model);
                 return RedirectToAction("Index");
             }
 
-            // Jeśli ModelState nie jest poprawny, ponownie inicjuj listę organizacji
+            // If ModelState is not valid, return to the view with the model containing the organizations
             InitializeOrganizationsList(model);
             return View(model);
         }

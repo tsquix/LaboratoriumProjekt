@@ -47,8 +47,8 @@ namespace Data
              Nip = "2498534",
              Regon = "0873439249",
          }
-      
-            
+
+
            );
             modelBuilder.Entity<OrganizationEntity>()
                .OwnsOne(e => e.Address)

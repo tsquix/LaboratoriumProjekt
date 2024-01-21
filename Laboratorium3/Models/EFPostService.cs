@@ -27,8 +27,10 @@ namespace Laboratorium3.Models
             if (find != null)
             {
                 _context.Posts.Remove(find);
+                _context.SaveChanges(); // Add this line to save changes to the database
             }
         }
+
 
         public void DeleteById(int id)
         {
