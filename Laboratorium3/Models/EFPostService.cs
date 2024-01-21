@@ -31,7 +31,7 @@ namespace Laboratorium3.Models
             }
         }
 
-
+        // co to kurwa jest
         public void DeleteById(int id)
         {
             PostEntity entity = _context.Posts.Find(id);
