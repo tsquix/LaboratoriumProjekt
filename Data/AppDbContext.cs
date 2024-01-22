@@ -47,18 +47,19 @@ namespace Data
             });
 
             // utworzenie administratora jako użytkownika
-            var admin = new IdentityUser
+            var admin = new IdentityUser()
             {
                 Id = ADMIN_ID,
-                Email = "adam@wsei.edu.pl",
+                Email = "adam@adam.pl",
                 EmailConfirmed = true,
-                UserName = "adam",
-                NormalizedUserName = "ADMIN"
+                UserName = "adam@adam.pl",
+                NormalizedUserName = "ADAM@ADAM.PL",
+                NormalizedEmail = "ADAM@ADAM.PL",
             };
-
+           
             // haszowanie hasła
             PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
-            admin.PasswordHash = ph.HashPassword(admin, "1234abcd!@#$ABCD");
+            admin.PasswordHash = ph.HashPassword(admin, "1234abcd!");
 
             // zapisanie użytkownika
             modelBuilder.Entity<IdentityUser>().HasData(admin);

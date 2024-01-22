@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240122163839_InitialCreate3")]
-    partial class InitialCreate3
+    [Migration("20240122190320_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -200,7 +200,7 @@ namespace Data.Migrations
                             Author = "siergiej96",
                             Comment = "Comment 1",
                             Content = "Wojna na Ukrainie kwitnie",
-                            PublicationDate = new DateTime(2024, 1, 22, 17, 38, 39, 324, DateTimeKind.Local).AddTicks(5490),
+                            PublicationDate = new DateTime(2024, 1, 22, 20, 3, 20, 673, DateTimeKind.Local).AddTicks(4442),
                             Tags = "Tag1"
                         },
                         new
@@ -209,7 +209,7 @@ namespace Data.Migrations
                             Author = "Antoni Macierewicz",
                             Comment = "Comment 2",
                             Content = "PIS wygrał wybory",
-                            PublicationDate = new DateTime(2024, 1, 22, 17, 38, 39, 324, DateTimeKind.Local).AddTicks(5556),
+                            PublicationDate = new DateTime(2024, 1, 22, 20, 3, 20, 673, DateTimeKind.Local).AddTicks(4498),
                             Tags = "Tag2"
                         },
                         new
@@ -251,8 +251,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c29e8ffb-d727-4486-ba44-90e155dc4e0d",
-                            ConcurrencyStamp = "c29e8ffb-d727-4486-ba44-90e155dc4e0d",
+                            Id = "1b7e784d-91de-442c-b75a-9db73d260047",
+                            ConcurrencyStamp = "1b7e784d-91de-442c-b75a-9db73d260047",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -347,18 +347,19 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f113f519-86b9-4495-a447-a8e54c7bb6cc",
+                            Id = "62c6566f-2d0e-4029-abb9-fc2bb672f061",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b31fb779-9f7a-48ad-84d7-b868e1235a6a",
-                            Email = "adam@wsei.edu.pl",
+                            ConcurrencyStamp = "3355fdec-6bc4-4062-9f6a-1a3f856f6c94",
+                            Email = "adam@adam.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG9xK/214OQ9QZDVi3hhHRe56ENk1vj+Fbs8wUqAOoFYoyw2xt0lp9LHzJBqpvvEMg==",
+                            NormalizedEmail = "ADAM@ADAM.PL",
+                            NormalizedUserName = "ADAM@ADAM.PL",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB+yVMs5MaiQ4EaGIL8p8h/ZWBoAvjL1nIr7Wpa9p8MjibeP06boIIv8iZivgTvhgQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6105922b-fbdc-4674-8e8c-5e426f1ca11b",
+                            SecurityStamp = "85e55787-ca6b-48e1-8b8f-9efbe469da3d",
                             TwoFactorEnabled = false,
-                            UserName = "adam"
+                            UserName = "adam@adam.pl"
                         });
                 });
 
@@ -424,8 +425,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f113f519-86b9-4495-a447-a8e54c7bb6cc",
-                            RoleId = "c29e8ffb-d727-4486-ba44-90e155dc4e0d"
+                            UserId = "62c6566f-2d0e-4029-abb9-fc2bb672f061",
+                            RoleId = "1b7e784d-91de-442c-b75a-9db73d260047"
                         });
                 });
 
