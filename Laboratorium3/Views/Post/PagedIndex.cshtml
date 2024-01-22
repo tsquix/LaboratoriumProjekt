@@ -63,7 +63,7 @@
                 <li class="page-item">
                     <a class="page-link"
                        asp-controller="Post"
-                       asp-action="PagingIndex"
+                       asp-action="PagedIndex"
                        asp-route-page="@(Model.Page - 1)"
                        asp-route-size="@Model.Size">
                         Poprzednia
@@ -84,7 +84,7 @@
                 <li class="page-item">
                     <a class="page-link"
                        asp-controller="Post"
-                       asp-action="PagingIndex"
+                       asp-action="PagedIndex"
                        asp-route-page="@(Model.Page + 1)"
                        asp-route-size="@Model.Size">
                         Następna
