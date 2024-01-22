@@ -62,5 +62,30 @@ namespace Laboratorium3.Models
         {
             throw new NotImplementedException();
         }
+        //public List<OrganizationEntity> FindAllOrganizations()
+        //{
+        //    //throw new NotImplementedException();
+        //    return post.Values
+        // .Select(contact => new OrganizationEntity
+        // {
+        //     Id = post.Id,
+        //   
+        //                         
+        // })
+        // .ToList();
+        //}
+        public PagingList<Post> FindPage(int page, int size)
+        {
+            return PagingList<Post>.Create(
+            (p, s) => _posts.OrderBy(c => c.Value.Content)
+                .Skip((p - 1) * s)
+                .Take(s)
+                .Select(c => c.Value)
+            .ToList(),
+                page,
+                size,
+                _posts.Count()
+            );
+        }
     }
 }

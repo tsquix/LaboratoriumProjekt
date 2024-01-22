@@ -2,6 +2,7 @@
 using Data.Entities;
 using Data;
 using Laboratorium3.Mappers;
+using Microsoft.Extensions.Hosting;
 
 namespace Laboratorium3.Models
 {
@@ -67,5 +68,21 @@ namespace Laboratorium3.Models
         {
             throw new NotImplementedException();
         }
-    }
+
+        public PagingList<Post> FindPage(int page, int size)
+        {
+            return PagingList<Post>.Create(
+                (p, s) => _context.Posts
+                .OrderBy(c => c.Content)
+                .Skip((p-1) *s)
+                .Take(s)
+                .Select(PostMapper.FromEntity)
+                .ToList()
+                ,
+                page,
+                size,
+                _context.Posts.Count()
+                );
+        }
+
 }

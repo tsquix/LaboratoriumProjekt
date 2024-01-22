@@ -112,7 +112,11 @@ namespace Laboratorium3.Controllers
 
             return View();
         }
-
+        public IActionResult PagingIndex(int page = 1, int size = 10)
+        {
+            var postsPage = _postService.FindPage(page, size);
+            return View(postsPage);
+        }
 
 
     }

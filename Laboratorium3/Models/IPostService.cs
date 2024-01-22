@@ -11,6 +11,7 @@ namespace Laboratorium3.Models
         Post? FindById(int id);
         List<OrganizationEntity> FindAllOrganizations();
         //List<OrganizationEntity> FindAllOrganizationsForVieModel();
+        PagingList<Post> FindPage(int page, int size);
     }
 }
 
