@@ -252,12 +252,12 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "68576fb2-f74b-454b-9fb5-30a7a19539bb", "68576fb2-f74b-454b-9fb5-30a7a19539bb", "admin", "ADMIN" });
+                values: new object[] { "5e698e70-f272-41b8-970b-c4c82c6e42c8", "5e698e70-f272-41b8-970b-c4c82c6e42c8", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9ce67c0e-6f82-462a-8766-cefe318ca8d8", 0, "47d495de-7cb8-4e6a-88d5-40cc36d07bfd", "adam@wsei.edu.pl", true, false, null, null, "ADMIN", "AQAAAAIAAYagAAAAENQvsmZYxFlIaBXY0fnomb1o1vYTrBmPjU+3Od2CboalXc2xkJebXqVEeVafKNdTqg==", null, false, "94e98f43-7a03-4954-a3d8-85c1c58871a6", false, "adam" });
+                values: new object[] { "a20f5248-8f72-4089-9546-04f31497fb9b", 0, "8c9d094a-ac2c-46f3-bdbc-c86c546245a6", "adam@wsei.edu.pl", true, false, null, null, "ADMIN", "AQAAAAIAAYagAAAAEECVZaDuCWjT8NLruVqGmNFmnbbD++LuONAa2r5vbCuGDgAcyrT3dKkxIVUONJQnbA==", null, false, "8860bb3c-51a2-40e9-b988-bfff1db743fc", false, "adam" });
 
             migrationBuilder.InsertData(
                 table: "Author",
@@ -293,15 +293,15 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Author", "Comment", "Content", "OrganizationId", "PublicationDate", "Tags" },
                 values: new object[,]
                 {
-                    { 1, "siergiej96", "Comment 1", "Wojna na Ukrainie kwitnie", null, new DateTime(2024, 1, 21, 20, 34, 27, 769, DateTimeKind.Local).AddTicks(5364), "Tag1" },
-                    { 2, "Antoni Macierewicz", "Comment 2", "PIS wygrał wybory", null, new DateTime(2024, 1, 21, 20, 34, 27, 769, DateTimeKind.Local).AddTicks(5412), "Tag2" },
+                    { 1, "siergiej96", "Comment 1", "Wojna na Ukrainie kwitnie", null, new DateTime(2024, 1, 22, 16, 13, 53, 563, DateTimeKind.Local).AddTicks(3073), "Tag1" },
+                    { 2, "Antoni Macierewicz", "Comment 2", "PIS wygrał wybory", null, new DateTime(2024, 1, 22, 16, 13, 53, 563, DateTimeKind.Local).AddTicks(3130), "Tag2" },
                     { 3, "maciek2006", "Comment 3", "Barcelona na szczycie", null, new DateTime(2010, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tag3" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "68576fb2-f74b-454b-9fb5-30a7a19539bb", "9ce67c0e-6f82-462a-8766-cefe318ca8d8" });
+                values: new object[] { "5e698e70-f272-41b8-970b-c4c82c6e42c8", "a20f5248-8f72-4089-9546-04f31497fb9b" });
 
             migrationBuilder.InsertData(
                 table: "AuthorContent",

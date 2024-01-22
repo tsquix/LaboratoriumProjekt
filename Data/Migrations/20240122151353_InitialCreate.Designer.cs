@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240121193428_InitialCreate")]
+    [Migration("20240122151353_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -200,7 +200,7 @@ namespace Data.Migrations
                             Author = "siergiej96",
                             Comment = "Comment 1",
                             Content = "Wojna na Ukrainie kwitnie",
-                            PublicationDate = new DateTime(2024, 1, 21, 20, 34, 27, 769, DateTimeKind.Local).AddTicks(5364),
+                            PublicationDate = new DateTime(2024, 1, 22, 16, 13, 53, 563, DateTimeKind.Local).AddTicks(3073),
                             Tags = "Tag1"
                         },
                         new
@@ -209,7 +209,7 @@ namespace Data.Migrations
                             Author = "Antoni Macierewicz",
                             Comment = "Comment 2",
                             Content = "PIS wygrał wybory",
-                            PublicationDate = new DateTime(2024, 1, 21, 20, 34, 27, 769, DateTimeKind.Local).AddTicks(5412),
+                            PublicationDate = new DateTime(2024, 1, 22, 16, 13, 53, 563, DateTimeKind.Local).AddTicks(3130),
                             Tags = "Tag2"
                         },
                         new
@@ -251,8 +251,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "68576fb2-f74b-454b-9fb5-30a7a19539bb",
-                            ConcurrencyStamp = "68576fb2-f74b-454b-9fb5-30a7a19539bb",
+                            Id = "5e698e70-f272-41b8-970b-c4c82c6e42c8",
+                            ConcurrencyStamp = "5e698e70-f272-41b8-970b-c4c82c6e42c8",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -347,16 +347,16 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9ce67c0e-6f82-462a-8766-cefe318ca8d8",
+                            Id = "a20f5248-8f72-4089-9546-04f31497fb9b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47d495de-7cb8-4e6a-88d5-40cc36d07bfd",
+                            ConcurrencyStamp = "8c9d094a-ac2c-46f3-bdbc-c86c546245a6",
                             Email = "adam@wsei.edu.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAENQvsmZYxFlIaBXY0fnomb1o1vYTrBmPjU+3Od2CboalXc2xkJebXqVEeVafKNdTqg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEECVZaDuCWjT8NLruVqGmNFmnbbD++LuONAa2r5vbCuGDgAcyrT3dKkxIVUONJQnbA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "94e98f43-7a03-4954-a3d8-85c1c58871a6",
+                            SecurityStamp = "8860bb3c-51a2-40e9-b988-bfff1db743fc",
                             TwoFactorEnabled = false,
                             UserName = "adam"
                         });
@@ -424,8 +424,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "9ce67c0e-6f82-462a-8766-cefe318ca8d8",
-                            RoleId = "68576fb2-f74b-454b-9fb5-30a7a19539bb"
+                            UserId = "a20f5248-8f72-4089-9546-04f31497fb9b",
+                            RoleId = "5e698e70-f272-41b8-970b-c4c82c6e42c8"
                         });
                 });
 

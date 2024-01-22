@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Laboratorium3.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class PostController : Controller
     {
         private readonly IPostService _postService;
@@ -94,6 +94,27 @@ namespace Laboratorium3.Controllers
                 .Select(o => new SelectListItem() { Value = o.Id.ToString(), Text = o.Title })
                 .ToList();
         }
+        [HttpGet]
+        public IActionResult CreateApi()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateApi(Post model)
+        {
+            if (ModelState.IsValid)
+            {
+                _postService.Add(model);
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+
+
     }
 
 }

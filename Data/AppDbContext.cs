@@ -25,7 +25,12 @@ namespace Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options) =>
             options.UseSqlite($"Data Source={DbPath}");
-
+        public IList<OrganizationEntity> GetOrganizationsWithPosts()//zmieniona nazwa
+        {
+            return Organizations
+                .Include(o => o.Posts)
+                .ToList();
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
