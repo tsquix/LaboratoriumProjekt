@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Laboratorium3.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     public class PostController : Controller
     {
         private readonly IPostService _postService;

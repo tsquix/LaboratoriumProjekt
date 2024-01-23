@@ -34,9 +34,40 @@ namespace Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             string ADMIN_ID = Guid.NewGuid().ToString();
             string ROLE_ID = Guid.NewGuid().ToString();
+            string USER_ID = Guid.NewGuid().ToString();
+            string USER_ROLE_ID = Guid.NewGuid().ToString();
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "user",
+                NormalizedName = "USER",
+                Id = USER_ROLE_ID,
+                ConcurrencyStamp = USER_ROLE_ID
+            });
 
+            var user = new IdentityUser
+            {
+                Id = USER_ID,
+                Email = "maciek@wsei.pl",
+                EmailConfirmed = true,
+                UserName = "maciek@wsei.pl",
+                NormalizedUserName = "MACIEK@WSEI.PL",
+                NormalizedEmail = "MACIEK@WSEI.PL"
+            };
+
+            PasswordHasher<IdentityUser> userPasswordHasher = new PasswordHasher<IdentityUser>();
+            user.PasswordHash = userPasswordHasher.HashPassword(user, "maciek123!");
+
+            modelBuilder.Entity<IdentityUser>().HasData(user);
+
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasData(new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = USER_ID
+                });
             // dodanie roli administratora
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
@@ -47,19 +78,19 @@ namespace Data
             });
 
             // utworzenie administratora jako użytkownika
-            var admin = new IdentityUser()
+            var admin = new IdentityUser
             {
                 Id = ADMIN_ID,
-                Email = "adam@adam.pl",
+                Email = "adam@wsei.pl",
                 EmailConfirmed = true,
-                UserName = "adam@adam.pl",
-                NormalizedUserName = "ADAM@ADAM.PL",
-                NormalizedEmail = "ADAM@ADAM.PL",
+                UserName = "adam@wsei.pl",
+                NormalizedUserName = "ADAM@WSEI.PL",
+                NormalizedEmail = "ADAM@WSEI.PL"
             };
-           
+
             // haszowanie hasła
             PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
-            admin.PasswordHash = ph.HashPassword(admin, "1234abcd!");
+            admin.PasswordHash = ph.HashPassword(admin, "1234abcd!@");
 
             // zapisanie użytkownika
             modelBuilder.Entity<IdentityUser>().HasData(admin);
@@ -81,22 +112,22 @@ namespace Data
                 .HasForeignKey(e => e.OrganizationId);
 
             modelBuilder.Entity<OrganizationEntity>().HasData(
-         new OrganizationEntity()
-         {
-             Id = 1,
-             Title = "WSEI",
-             Nip = "83492384",
-             Regon = "13424234",
-         },
-         new OrganizationEntity()
-         {
-             Id = 2,
-             Title = "Firma",
-             Nip = "2498534",
-             Regon = "0873439249",
-         }
+             new OrganizationEntity()
+             {
+                 Id = 1,
+                 Title = "WSEI",
+                 Nip = "83492384",
+                 Regon = "13424234",
+             },
+             new OrganizationEntity()
+             {
+                 Id = 2,
+                 Title = "Firma",
+                 Nip = "2498534",
+                 Regon = "0873439249",
+             }
 
-         );
+             );
             modelBuilder.Entity<Content>()
                 .HasData
                 (

@@ -197,7 +197,7 @@ namespace Data.Migrations
                             Author = "siergiej96",
                             Comment = "Comment 1",
                             Content = "Wojna na Ukrainie kwitnie",
-                            PublicationDate = new DateTime(2024, 1, 22, 20, 3, 20, 673, DateTimeKind.Local).AddTicks(4442),
+                            PublicationDate = new DateTime(2024, 1, 23, 14, 47, 13, 725, DateTimeKind.Local).AddTicks(7216),
                             Tags = "Tag1"
                         },
                         new
@@ -206,7 +206,7 @@ namespace Data.Migrations
                             Author = "Antoni Macierewicz",
                             Comment = "Comment 2",
                             Content = "PIS wygrał wybory",
-                            PublicationDate = new DateTime(2024, 1, 22, 20, 3, 20, 673, DateTimeKind.Local).AddTicks(4498),
+                            PublicationDate = new DateTime(2024, 1, 23, 14, 47, 13, 725, DateTimeKind.Local).AddTicks(7272),
                             Tags = "Tag2"
                         },
                         new
@@ -248,8 +248,15 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1b7e784d-91de-442c-b75a-9db73d260047",
-                            ConcurrencyStamp = "1b7e784d-91de-442c-b75a-9db73d260047",
+                            Id = "4a34be79-06bc-4b26-a599-d01b39a2795f",
+                            ConcurrencyStamp = "4a34be79-06bc-4b26-a599-d01b39a2795f",
+                            Name = "user",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "f330c594-d536-48dd-8d86-43f245a29700",
+                            ConcurrencyStamp = "f330c594-d536-48dd-8d86-43f245a29700",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -344,19 +351,35 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "62c6566f-2d0e-4029-abb9-fc2bb672f061",
+                            Id = "144109db-8b03-40ac-a1cd-de9e9010773c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3355fdec-6bc4-4062-9f6a-1a3f856f6c94",
-                            Email = "adam@adam.pl",
+                            ConcurrencyStamp = "adc2bb2f-ed46-4fa9-ae49-c3a442812bd7",
+                            Email = "maciek@wsei.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADAM@ADAM.PL",
-                            NormalizedUserName = "ADAM@ADAM.PL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB+yVMs5MaiQ4EaGIL8p8h/ZWBoAvjL1nIr7Wpa9p8MjibeP06boIIv8iZivgTvhgQ==",
+                            NormalizedEmail = "MACIEK@WSEI.PL",
+                            NormalizedUserName = "MACIEK@WSEI.PL",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHt3AaG+4Rm01nhjuiB9BLxnY6wOyC1z0VXrcSC53fsxWIQbNQTgvXpOs5MAMQG8bA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85e55787-ca6b-48e1-8b8f-9efbe469da3d",
+                            SecurityStamp = "5bd449ee-62f5-4b50-8a97-64254a53e9a8",
                             TwoFactorEnabled = false,
-                            UserName = "adam@adam.pl"
+                            UserName = "maciek@wsei.pl"
+                        },
+                        new
+                        {
+                            Id = "c70783ae-fe7f-43ff-994f-2a34497be7b8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "47dfd1f2-7880-49a9-a777-b3d1e0b505c1",
+                            Email = "adam@wsei.pl",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADAM@WSEI.PL",
+                            NormalizedUserName = "ADAM@WSEI.PL",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAvH+/NhmXFb7r5LED56zt32691YPylVkgbZLRBRz1BqtbHUuqQqGoQurY3zvIZzKg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1721b254-81bd-44b9-a871-15d6def94742",
+                            TwoFactorEnabled = false,
+                            UserName = "adam@wsei.pl"
                         });
                 });
 
@@ -422,8 +445,13 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "62c6566f-2d0e-4029-abb9-fc2bb672f061",
-                            RoleId = "1b7e784d-91de-442c-b75a-9db73d260047"
+                            UserId = "144109db-8b03-40ac-a1cd-de9e9010773c",
+                            RoleId = "4a34be79-06bc-4b26-a599-d01b39a2795f"
+                        },
+                        new
+                        {
+                            UserId = "c70783ae-fe7f-43ff-994f-2a34497be7b8",
+                            RoleId = "f330c594-d536-48dd-8d86-43f245a29700"
                         });
                 });
 
