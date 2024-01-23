@@ -1,9 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h3>Last visit: @ViewData["Visit"]</h3>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="container">
+    <header class="text-center mt-5">
+        <h1 class="display-4">Witaj na stronie głównej</h1>
+    </header>
+    <main class="text-center my-4">
+        <h3>Ostatnia wizyta: @ViewData["Visit"]</h3>
+        <p>Przydatne linki <a href="https://docs.microsoft.com/aspnet/core">tworzeniem aplikacji internetowych w ASP.NET Core</a>.</p>
+    </main>
+    <footer class="text-center py-3">
+        <p>&copy; Wszelkie prawa zastrzeżone.</p>
+    </footer>
 </div>
