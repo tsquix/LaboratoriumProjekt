@@ -254,8 +254,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "4a34be79-06bc-4b26-a599-d01b39a2795f", "4a34be79-06bc-4b26-a599-d01b39a2795f", "user", "USER" },
-                    { "f330c594-d536-48dd-8d86-43f245a29700", "f330c594-d536-48dd-8d86-43f245a29700", "admin", "ADMIN" }
+                    { "21128efa-2feb-425c-be4a-903655c75284", "21128efa-2feb-425c-be4a-903655c75284", "admin", "ADMIN" },
+                    { "fd75fd61-79b9-4d59-a863-4c518f899ca0", "fd75fd61-79b9-4d59-a863-4c518f899ca0", "user", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -263,8 +263,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "144109db-8b03-40ac-a1cd-de9e9010773c", 0, "adc2bb2f-ed46-4fa9-ae49-c3a442812bd7", "maciek@wsei.pl", true, false, null, "MACIEK@WSEI.PL", "MACIEK@WSEI.PL", "AQAAAAIAAYagAAAAEHt3AaG+4Rm01nhjuiB9BLxnY6wOyC1z0VXrcSC53fsxWIQbNQTgvXpOs5MAMQG8bA==", null, false, "5bd449ee-62f5-4b50-8a97-64254a53e9a8", false, "maciek@wsei.pl" },
-                    { "c70783ae-fe7f-43ff-994f-2a34497be7b8", 0, "47dfd1f2-7880-49a9-a777-b3d1e0b505c1", "adam@wsei.pl", true, false, null, "ADAM@WSEI.PL", "ADAM@WSEI.PL", "AQAAAAIAAYagAAAAEAvH+/NhmXFb7r5LED56zt32691YPylVkgbZLRBRz1BqtbHUuqQqGoQurY3zvIZzKg==", null, false, "1721b254-81bd-44b9-a871-15d6def94742", false, "adam@wsei.pl" }
+                    { "69b97de3-3ac3-4911-93fb-20c7bc84dd62", 0, "238d7e82-2b95-4576-9879-e148db14d90d", "adam@wsei.pl", true, false, null, "ADAM@WSEI.PL", "ADAM@WSEI.PL", "AQAAAAIAAYagAAAAEM3BwwcQnY7VhNJoZPS/agC+Uc+50DYJriJrFWAu1jHdlZh5YmPheL0776CICzcZCQ==", null, false, "3cfd148c-5d1c-4ea8-9612-4d2aa1c25c69", false, "adam@wsei.pl" },
+                    { "cd4405d7-ae2c-420f-a205-4775654cc1be", 0, "406e5c12-5bef-417b-b508-90d3a896cfda", "maciek@wsei.pl", true, false, null, "MACIEK@WSEI.PL", "MACIEK@WSEI.PL", "AQAAAAIAAYagAAAAEPuCqYZgd7f3uhmNrN3NM9WCWs0qmLorEfRKMHE7HCDD6YKBRYXCTYrhMQK/bxSt/g==", null, false, "bcc1af95-28a9-4519-a478-bd688ae25b55", false, "maciek@wsei.pl" }
                 });
 
             migrationBuilder.InsertData(
@@ -301,8 +301,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Author", "Comment", "Content", "OrganizationId", "PublicationDate", "Tags" },
                 values: new object[,]
                 {
-                    { 1, "siergiej96", "Comment 1", "Wojna na Ukrainie kwitnie", null, new DateTime(2024, 1, 23, 14, 47, 13, 725, DateTimeKind.Local).AddTicks(7216), "Tag1" },
-                    { 2, "Antoni Macierewicz", "Comment 2", "PIS wygrał wybory", null, new DateTime(2024, 1, 23, 14, 47, 13, 725, DateTimeKind.Local).AddTicks(7272), "Tag2" },
+                    { 1, "siergiej96", "Comment 1", "Wojna na Ukrainie kwitnie", null, new DateTime(2024, 1, 23, 17, 24, 10, 862, DateTimeKind.Local).AddTicks(959), "Tag1" },
+                    { 2, "Antoni Macierewicz", "Comment 2", "PIS wygrał wybory", null, new DateTime(2024, 1, 23, 17, 24, 10, 862, DateTimeKind.Local).AddTicks(1026), "Tag2" },
                     { 3, "maciek2006", "Comment 3", "Barcelona na szczycie", null, new DateTime(2010, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tag3" }
                 });
 
@@ -311,8 +311,8 @@ namespace Data.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "4a34be79-06bc-4b26-a599-d01b39a2795f", "144109db-8b03-40ac-a1cd-de9e9010773c" },
-                    { "f330c594-d536-48dd-8d86-43f245a29700", "c70783ae-fe7f-43ff-994f-2a34497be7b8" }
+                    { "21128efa-2feb-425c-be4a-903655c75284", "69b97de3-3ac3-4911-93fb-20c7bc84dd62" },
+                    { "fd75fd61-79b9-4d59-a863-4c518f899ca0", "cd4405d7-ae2c-420f-a205-4775654cc1be" }
                 });
 
             migrationBuilder.InsertData(
